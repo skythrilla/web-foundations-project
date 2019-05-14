@@ -2,6 +2,11 @@
 <html lang="en">
 
 <head>
+    <style>
+        button[disabled] {
+            background-color: grey;
+        }
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -9,16 +14,16 @@
 </head>
 
 <body>
-    <div class='container'>
-        <div style="display:flex">
-            <div style="flex:1">
+    <div>
+        <div style='display:flex'>
+            <div style='flex:1'>
                 <h1>Left</h1>
-                <div id="left">
+                <div id='left'>
                 </div>
             </div>
-            <div style="flex:1">
+            <div style='flex:1'>
                 <h1>Right</h1>
-                <div id="right">
+                <div id='right'>
                 </div>
             </div>
         </div>
@@ -34,9 +39,50 @@
         const left = document.querySelector('#left');
         const right = document.querySelector('#right');
 
-        //const listener = 
+        const handler = (evt) => {
+            if (evt.target.tagName === 'BUTTON') {
+                // console.log(evt.target.innerHTML);
+                data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
+                render();
+            }
+        };
+
+        left.addEventListener('click', handler);
+        right.addEventListener('click', handler);
+
+        const renderSection = (side, div) => {
+            const html = `
+        <ul>
+            ${
+            Object.keys(data).map( key => `<li><button ${ data[key] !==side ? 'disabled' : '' }>${ key }</button></li>
+            `).join('')
+            }
+        </ul>
+        `;
+            console.log(html);
+            div.innerHTML = html;
+        };
+        const render = () => {
+            renderSection('LEFT', left);
+            renderSection('RIGHT', right);
+        };
+        render();
+
+        // const renderItem = (key, side) => {
+        //     return `
+        //     <ul>
+        //        <li><button data-key='${key}' ${data[key] !== side ? 'disabled' : ''}>${key}
+        //             </button></li>
+        //             `;
+        // };
+        // const listener = (ev) => {
+        //     if (ev.target.tagName === 'BUTTON') {
+        //         const key = ev.target.getAttribute('data-key');
+        //         data[key] = data[key] === 'LEFT' ? 'RIGHT' : 'LEFT';
+        //         render();
+        //     }
+        // };
     </script>
-    </div>
 </body>
 
 </html>
