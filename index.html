@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Sky's Web Foundations Project</title>
-  </head>
-  <body></body>
+</head>
+
+<body>
+    <div class='container'>
+        <div style="display:flex">
+            <div style="flex:1">
+                <h1>Left</h1>
+                <div id="left">
+                </div>
+            </div>
+            <div style="flex:1">
+                <h1>Right</h1>
+                <div id="right">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const data = {
+            Foo: 'LEFT',
+            Bar: 'LEFT',
+            Bazz: 'RIGHT',
+            Quq: 'LEFT'
+        };
+
+        const left = document.querySelector('#left');
+        const right = document.querySelector('#right');
+
+        //const listener = 
+    </script>
+    </div>
+</body>
+
 </html>
