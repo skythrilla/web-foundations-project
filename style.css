@@ -37,6 +37,29 @@
   div #person {
       font-weight: bold;
       border: solid 1px dodgerblue;
+      border-bottom: 0;
+      /* border-top: 0; */
+  }
+
+  div #personbtm {
+      font-weight: bold;
+      border: solid 1px dodgerblue;
+      /* border-bottom: 0; */
+      border-top: 0;
+  }
+
+  div #persontop {
+      font-weight: bold;
+      border: solid 1px dodgerblue;
+      border-bottom: 0;
+      border-top: 0;
+  }
+
+  h2 #personbox {
+      font-weight: bold;
+      border-bottom: solid 1px dodgerblue;
+      /* border-bottom: 0; */
+      /* border-top: 0; */
   }
 
   /* 

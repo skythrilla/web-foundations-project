@@ -22,19 +22,19 @@ const data = {
         Bazz: 5
     }
 };
-const left = document.querySelector('#left');
-const right = document.querySelector('#right');
+// const left = document.querySelector('#left');
+// const right = document.querySelector('#right');
 const center = document.querySelector('#center');
 
 const handler = (evt) => {
-    if (evt.target.tagName === 'BUTTON') {
-        data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
-        render();
-    }
+    // if (evt.target.tagName === 'BUTTON') {
+    // data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
+    render();
+    // }
 };
 
-left.addEventListener('click', handler);
-right.addEventListener('click', handler);
+// left.addEventListener('click', handler);
+// right.addEventListener('click', handler);
 center.addEventListener('click', handler);
 
 const renderSection = (side, div) => {
@@ -69,24 +69,21 @@ render();
 const template = (data) => `
             <center>
             <div id='person'>
-                <h2>Moe</h2>
+                <h2 id='personbox'>Moe</h2>
                 <button data-action='dec'>-</button>               
                  Foo: ${(data.customers.Moe.Foo)}
-
                 <button data-action='inc'>+</button>
             </div>
-            <div id='person'>
+            <div id='persontop'>
                 <br />
                 <button data-action2='dec'>-</button>                
                 Bar: ${(data.customers.Moe.Bar)}
-
                 <button data-action2='inc'>+</button>
             </div>
-            <div id='person'>
+            <div id='personbtm'>
                 <br />
                 <button data-action3='dec'>-</button>                
                 Bazz: ${(data.customers.Moe.Bazz)}
-
                 <button data-action3='inc'>+</button>
             </div>
             </center>
@@ -94,24 +91,21 @@ const template = (data) => `
 const template2 = (data) => `
             <center>
             <div id='person'>
-                <h2>Larry</h2>
+                <h2 id='personbox'>Larry</h2>
                 <button data-action='dec'>-</button>               
                 Foo: ${(data.customers.Larry.Foo)}
-
                 <button data-action='inc'>+</button>
             </div>
-            <div id='person'>
+            <div id='persontop'>
                 <br />
                 <button data-action2='dec'>-</button>                
                 Bar: ${(data.customers.Larry.Bar)}
-
                 <button data-action2='inc'>+</button>
             </div>
-            <div id='person'>
+            <div id='personbtm'>
                 <br />
                 <button data-action3='dec'>-</button>                
                 Bazz: ${(data.customers.Larry.Bazz)}
-
                 <button data-action3='inc'>+</button>
             </div>
             </center>
@@ -119,24 +113,21 @@ const template2 = (data) => `
 const template3 = (data) => `
             <center>
             <div id='person'>
-                <h2>Curly</h2>
+                <h2 id='personbox'>Curly</h2>
                 <button data-action='dec'>-</button>                
                 Foo: ${(data.customers.Curly.Foo)}
-
                 <button data-action='inc'>+</button>
             </div>
-            <div id='person'>
+            <div id='persontop'>
                 <br />
                 <button data-action2='dec'>-</button>                
                 Bar: ${(data.customers.Curly.Bar)}
-
                 <button data-action2='inc'>+</button>
             </div>
-            <div id='person'>
+            <div id='personbtm'>
                 <br />
                 <button data-action3='dec'>-</button>                
                 Bazz: ${(data.customers.Curly.Bazz)}
-
                 <button data-action3='inc'>+</button>
             </div>
             </center>
