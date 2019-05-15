@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <style>
+    <!-- <style>
         button[disabled] {
             background-color: grey;
         }
-    </style>
+    </style> -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -22,39 +22,81 @@
                 </div>
             </div>
             <div style='flex:1'>
+                <h1>Center</h1>
+                <div id='center'>
+                </div>
+            </div>
+            <div style='flex:1'>
                 <h1>Right</h1>
                 <div id='right'>
                 </div>
             </div>
         </div>
+
+        <div style='display:flex'>
+            <div id="square" style='flex:1'>
+                Square
+            </div>
+            <div id="square2" style='flex:1'>
+                Square2
+            </div>
+            <div id="square3" style='flex:1'>
+                Square3
+            </div>
+        </div>
     </div>
     <script>
         const data = {
-            Foo: 'LEFT',
-            Bar: 'LEFT',
-            Bazz: 'RIGHT',
-            Quq: 'LEFT'
+            customers: {
+                Moe: {
+                    Foo: 0,
+                    Bar: 0,
+                    Bazz: 0
+                },
+                Larry: {
+                    Foo: 0,
+                    Bar: 0,
+                    Bazz: 0
+                },
+                Curly: {
+                    Foo: 0,
+                    Bar: 0,
+                    Bazz: 0
+                }
+            },
+            prizes: {
+                Foo: 1,
+                Bar: 3,
+                Bazz: 5
+            }
         };
 
         const left = document.querySelector('#left');
         const right = document.querySelector('#right');
+        const center = document.querySelector('#center');
 
         const handler = (evt) => {
             if (evt.target.tagName === 'BUTTON') {
                 // console.log(evt.target.innerHTML);
-                data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
+                // for (let key in data) {
+                data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' :
+                    'LEFT';
+                // }
                 render();
             }
         };
 
         left.addEventListener('click', handler);
         right.addEventListener('click', handler);
+        center.addEventListener('click', handler);
 
         const renderSection = (side, div) => {
+            console.log(Object.keys(data));
+
             const html = `
         <ul>
             ${
-            Object.keys(data).map( key => `<li><button ${ data[key] !==side ? 'disabled' : '' }>${ key }</button></li>
+            Object.keys(data.prizes).map( key => `<li><button ${ data[key] !== side ? 'disabled' : '' }>${ key }</button></li>
             `).join('')
             }
         </ul>
@@ -62,11 +104,95 @@
             console.log(html);
             div.innerHTML = html;
         };
+
         const render = () => {
             renderSection('LEFT', left);
+            renderSection('CENTER', center);
             renderSection('RIGHT', right);
         };
         render();
+
+        //-----inc and dec---------------------------------------------------
+        const state = {
+            counter: 0,
+            counter2: 0,
+            counter3: 0
+        };
+        const template = (data) => `
+            <div>
+                ${state.counter}
+                <br />
+                <button data-action='dec'>-</button>
+                <button data-action='inc'>+</button>
+            </div>
+            `;
+        const template2 = (data) => `
+            <div>
+                ${state.counter2}
+                <br />
+                <button data-action2='dec'>-</button>
+                <button data-action2='inc'>+</button>
+            </div>
+            `;
+        const template3 = (data) => `
+            <div>
+                ${state.counter3}
+                <br />
+                <button data-action3='dec'>-</button>
+                <button data-action3='inc'>+</button>
+            </div>
+            `;
+        const div = document.querySelector('#square');
+        const div2 = document.querySelector('#square2');
+        const div3 = document.querySelector('#square3');
+
+        const renderSq = () => {
+            div.innerHTML = template(state);
+        }
+        const renderSq2 = () => {
+            div2.innerHTML = template2(state);
+        }
+        const renderSq3 = () => {
+            div3.innerHTML = template3(state);
+        }
+        renderSq();
+        renderSq2();
+        renderSq3();
+
+        div.addEventListener('click', (ev) => {
+            const action = ev.target.getAttribute('data-action');
+            // console.log(action);
+            if (action === 'dec') {
+                state.counter = state.counter - 1;
+            }
+            if (action === 'inc') {
+                state.counter = state.counter + 1;
+            }
+            renderSq();
+        });
+        div2.addEventListener('click', (ev) => {
+            const action2 = ev.target.getAttribute('data-action2');
+            // console.log(action);
+            if (action2 === 'dec') {
+                state.counter2 = state.counter2 - 1;
+            }
+            if (action2 === 'inc') {
+                state.counter2 = state.counter2 + 1;
+            }
+            renderSq2();
+        });
+        div3.addEventListener('click', (ev) => {
+            const action3 = ev.target.getAttribute('data-action3');
+            // console.log(action);
+            if (action3 === 'dec') {
+                state.counter3 = state.counter3 - 1;
+            }
+            if (action3 === 'inc') {
+                state.counter3 = state.counter3 + 1;
+            }
+            renderSq3();
+        });
+
 
         // const renderItem = (key, side) => {
         //     return `
