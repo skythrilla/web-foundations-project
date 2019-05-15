@@ -70,7 +70,15 @@
                 Bazz: 5
             }
         };
+        let prize1 = Number(Object.values(data.prizes.Foo));
+        let prize2 = Object.values(data.prizes.Bar);
+        let prize3 = Object.values(data.prizes.Bazz);
 
+        // const state = {
+        //     counter: 0,
+        //     counter2: 0,
+        //     counter3: 0
+        // };
         const left = document.querySelector('#left');
         const right = document.querySelector('#right');
         const center = document.querySelector('#center');
@@ -79,8 +87,7 @@
             if (evt.target.tagName === 'BUTTON') {
                 // console.log(evt.target.innerHTML);
                 // for (let key in data) {
-                data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' :
-                    'LEFT';
+                data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
                 // }
                 render();
             }
@@ -91,12 +98,12 @@
         center.addEventListener('click', handler);
 
         const renderSection = (side, div) => {
-            console.log(Object.keys(data));
+            console.log(Object.values(data.prizes));
 
             const html = `
         <ul>
             ${
-            Object.keys(data.prizes).map( key => `<li><button ${ data[key] !== side ? 'disabled' : '' }>${ key }</button></li>
+            Object.entries(data.prizes).map( key => `<li><button ${ data[key] !== side ? 'disabled' : '' }>${ key }</button></li>
             `).join('')
             }
         </ul>
@@ -113,14 +120,10 @@
         render();
 
         //-----inc and dec---------------------------------------------------
-        const state = {
-            counter: 0,
-            counter2: 0,
-            counter3: 0
-        };
+
         const template = (data) => `
             <div>
-                ${state.counter}
+                ${Object.values(data.prizes)}
                 <br />
                 <button data-action='dec'>-</button>
                 <button data-action='inc'>+</button>
@@ -128,7 +131,7 @@
             `;
         const template2 = (data) => `
             <div>
-                ${state.counter2}
+                ${Object.values(data.prizes)}
                 <br />
                 <button data-action2='dec'>-</button>
                 <button data-action2='inc'>+</button>
@@ -136,7 +139,7 @@
             `;
         const template3 = (data) => `
             <div>
-                ${state.counter3}
+                ${Object.values(data.prizes)}
                 <br />
                 <button data-action3='dec'>-</button>
                 <button data-action3='inc'>+</button>
@@ -147,13 +150,13 @@
         const div3 = document.querySelector('#square3');
 
         const renderSq = () => {
-            div.innerHTML = template(state);
+            div.innerHTML = template(data);
         }
         const renderSq2 = () => {
-            div2.innerHTML = template2(state);
+            div2.innerHTML = template2(data);
         }
         const renderSq3 = () => {
-            div3.innerHTML = template3(state);
+            div3.innerHTML = template3(data);
         }
         renderSq();
         renderSq2();
@@ -162,35 +165,46 @@
         div.addEventListener('click', (ev) => {
             const action = ev.target.getAttribute('data-action');
             // console.log(action);
-            if (action === 'dec') {
-                state.counter = state.counter - 1;
+            //console.log(prize1);
+            // let prize1 = Object.values(data.prizes.Foo);
+            if (action === 'dec' && prize1 > 0) {
+                prize1--;
             }
             if (action === 'inc') {
-                state.counter = state.counter + 1;
+                prize1++;
             }
+            data.prizes.Foo = prize1;
+            console.log(data.prizes.Foo);
             renderSq();
+            render();
         });
         div2.addEventListener('click', (ev) => {
             const action2 = ev.target.getAttribute('data-action2');
             // console.log(action);
-            if (action2 === 'dec') {
-                state.counter2 = state.counter2 - 1;
+            if (action2 === 'dec' && prize2 > 0) {
+                prize2--;
             }
             if (action2 === 'inc') {
-                state.counter2 = state.counter2 + 1;
+                prize2++;
             }
+            data.prizes.Bar = prize2;
+            console.log(prize2);
             renderSq2();
+            render();
         });
         div3.addEventListener('click', (ev) => {
             const action3 = ev.target.getAttribute('data-action3');
             // console.log(action);
-            if (action3 === 'dec') {
-                state.counter3 = state.counter3 - 1;
+            if (action3 === 'dec' && prize3 > 0) {
+                prize3--;
             }
             if (action3 === 'inc') {
-                state.counter3 = state.counter3 + 1;
+                prize3++;
             }
+            data.prizes.Bazz = prize3;
+            console.log(prize3);
             renderSq3();
+            render();
         });
 
 
