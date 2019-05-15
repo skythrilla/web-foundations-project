@@ -12,20 +12,31 @@
       color: dodgerblue;
   }
 
+  header {
+      /* display: flex; */
+      display: block;
+      font-size: 2em;
+      margin-top: 0.67em;
+      margin-bottom: 0.67em;
+      margin-left: 0;
+      margin-right: 0;
+      font-weight: bold;
+      border-bottom: solid 1px dodgerblue;
+
+  }
+
   h3 {
       background-color: dodgerblue;
       color: white;
       border: solid 1px black;
       border-radius: 100%;
       width: 100px;
-      /* height: 100px; */
-
+      /* height: 20px; */
   }
 
-  h2 {
-      /* display: flex; */
+  div #person {
+      font-weight: bold;
       border: solid 1px dodgerblue;
-
   }
 
   /* 

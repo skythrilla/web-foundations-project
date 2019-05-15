@@ -38,59 +38,51 @@ right.addEventListener('click', handler);
 center.addEventListener('click', handler);
 
 const renderSection = (side, div) => {
-    //console.log(Object.values(data.prizes));
+    // const html = `
+    //         ${
+    //     Object.entries(data.prizes).map(key => `<center>
+    //             <h3>${key.join(': ')}</h3>
+    //         </center>`).join(' ')
+    //     }
+    //     `;
+
     const html = `
-            ${
-        // Object.entries(data.prizes).map( key => `${key.join(': ')}`).join('    ')
-        Object.entries(data.prizes).map(key => `<center>
-                <h3>${key.join(': ')}</h3>
-            </center>`).join(' ')
+        ${
+        Object.entries(data.prizes).map(key => `<center><h3>${key.join(': ')}</h3>
+            </center>`).join('')
         }
         `;
-    // console.log(html);
+
     div.innerHTML = html;
+
+    // div.innerHTML = data.prizes.Foo;
 };
 
-// const renderSection = (side, div) => {
-// //console.log(Object.values(data.prizes));
-// const html = `
-// <ul>
-//     ${
-//     Object.entries(data.prizes).map( key => `<li><button ${ data[key] !==side ? 'disabled' : '' }>${ key.join(': ')
-//             }</button></li>
-//     `).join('')
-//     }
-// </ul>
-// `;
-// // console.log(html);
-// div.innerHTML = html;
-// };
 const render = () => {
-    renderSection('LEFT', left);
+    //renderSection('LEFT', left);
     renderSection('CENTER', center);
-    renderSection('RIGHT', right);
+    //renderSection('RIGHT', right);
 };
 render();
 
-//-----inc and dec---------------------------------------------------
-
+//-----inc and dec---------------------------------------------
 const template = (data) => `
             <center>
-            <div>
+            <div id='person'>
                 <h2>Moe</h2>
                 <button data-action='dec'>-</button>               
                  Foo: ${(data.customers.Moe.Foo)}
 
                 <button data-action='inc'>+</button>
             </div>
-            <div>
+            <div id='person'>
                 <br />
                 <button data-action2='dec'>-</button>                
                 Bar: ${(data.customers.Moe.Bar)}
 
                 <button data-action2='inc'>+</button>
             </div>
-            <div>
+            <div id='person'>
                 <br />
                 <button data-action3='dec'>-</button>                
                 Bazz: ${(data.customers.Moe.Bazz)}
@@ -101,21 +93,21 @@ const template = (data) => `
             `;
 const template2 = (data) => `
             <center>
-            <div>
+            <div id='person'>
                 <h2>Larry</h2>
                 <button data-action='dec'>-</button>               
                 Foo: ${(data.customers.Larry.Foo)}
 
                 <button data-action='inc'>+</button>
             </div>
-            <div>
+            <div id='person'>
                 <br />
                 <button data-action2='dec'>-</button>                
                 Bar: ${(data.customers.Larry.Bar)}
 
                 <button data-action2='inc'>+</button>
             </div>
-            <div>
+            <div id='person'>
                 <br />
                 <button data-action3='dec'>-</button>                
                 Bazz: ${(data.customers.Larry.Bazz)}
@@ -126,21 +118,21 @@ const template2 = (data) => `
             `;
 const template3 = (data) => `
             <center>
-            <div>
+            <div id='person'>
                 <h2>Curly</h2>
                 <button data-action='dec'>-</button>                
                 Foo: ${(data.customers.Curly.Foo)}
 
                 <button data-action='inc'>+</button>
             </div>
-            <div>
+            <div id='person'>
                 <br />
                 <button data-action2='dec'>-</button>                
                 Bar: ${(data.customers.Curly.Bar)}
 
                 <button data-action2='inc'>+</button>
             </div>
-            <div>
+            <div id='person'>
                 <br />
                 <button data-action3='dec'>-</button>                
                 Bazz: ${(data.customers.Curly.Bazz)}
@@ -227,8 +219,6 @@ div2.addEventListener('click', (ev) => {
     if (action2 === 'inc' && data.prizes.Bar > 0) {
         data.prizes.Bar--;
         data.customers.Larry.Bar++;
-        console.log(data.customers.Larry.Bar);
-
     }
     //bazz
     if (action3 === 'dec' && data.customers.Larry.Bazz > 0) {
@@ -239,7 +229,6 @@ div2.addEventListener('click', (ev) => {
         data.prizes.Bazz--;
         data.customers.Larry.Bazz++;
     }
-
     render();
     renderSquares();
 });
@@ -263,8 +252,6 @@ div3.addEventListener('click', (ev) => {
     if (action2 === 'inc' && data.prizes.Bar > 0) {
         data.prizes.Bar--;
         data.customers.Curly.Bar++;
-        console.log(data.customers.Curly.Bar);
-
     }
     //bazz
     if (action3 === 'dec' && data.customers.Curly.Bazz > 0) {
@@ -278,19 +265,3 @@ div3.addEventListener('click', (ev) => {
     render();
     renderSquares();
 });
-
-
-// const renderItem = (key, side) => {
-//     return `
-//     <ul>
-//        <li><button data-key='${key}' ${data[key] !== side ? 'disabled' : ''}>${key}
-//             </button></li>
-//             `;
-// };
-// const listener = (ev) => {
-//     if (ev.target.tagName === 'BUTTON') {
-//         const key = ev.target.getAttribute('data-key');
-//         data[key] = data[key] === 'LEFT' ? 'RIGHT' : 'LEFT';
-//         render();
-//     }
-// };
