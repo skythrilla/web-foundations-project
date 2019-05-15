@@ -85,6 +85,7 @@ const template = (data) => `
                 <button data-action3='dec'>-</button>                
                 Bazz: ${(data.customers.Moe.Bazz)}
                 <button data-action3='inc'>+</button>
+            <br /><br />
             </div>
             </center>
             `;
@@ -107,7 +108,8 @@ const template2 = (data) => `
                 <button data-action3='dec'>-</button>                
                 Bazz: ${(data.customers.Larry.Bazz)}
                 <button data-action3='inc'>+</button>
-            </div>
+            <br /><br />
+            </div>               
             </center>
             `;
 const template3 = (data) => `
@@ -129,6 +131,7 @@ const template3 = (data) => `
                 <button data-action3='dec'>-</button>                
                 Bazz: ${(data.customers.Curly.Bazz)}
                 <button data-action3='inc'>+</button>
+                <br /><br />
             </div>
             </center>
             `;
