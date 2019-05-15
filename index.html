@@ -42,12 +42,15 @@
         </div>
 
         <div style='display:flex'>
+            <h2>Moe:</h2>
             <div id="square" style='flex:1'>
                 Square
             </div>
+            <h2>Larry:</h2>
             <div id="square2" style='flex:1'>
                 Square2
             </div>
+            <h2>Curly:</h2>
             <div id="square3" style='flex:1'>
                 Square3
             </div>
@@ -83,10 +86,10 @@
         const center = document.querySelector('#center');
 
         const handler = (evt) => {
-            // if (evt.target.tagName === 'BUTTON') {
-            //     data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
-            render();
-            // }
+            if (evt.target.tagName === 'BUTTON') {
+                data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
+                render();
+            }
         };
 
         left.addEventListener('click', handler);
@@ -103,7 +106,7 @@
             }
         </ul>
         `;
-            console.log(html);
+            // console.log(html);
             div.innerHTML = html;
         };
 
@@ -118,23 +121,59 @@
 
         const template = (data) => `
             <div>
-                ${Object.values(data.prizes)}
+                Foo: ${(data.customers.Moe.Foo)}
                 <br />
                 <button data-action='dec'>-</button>
                 <button data-action='inc'>+</button>
             </div>
-            `;
-        const template2 = (data) => `
             <div>
-                ${Object.values(data.prizes)}
+                Bar: ${(data.customers.Moe.Bar)}
                 <br />
                 <button data-action2='dec'>-</button>
                 <button data-action2='inc'>+</button>
             </div>
+            <div>
+                Bazz: ${(data.customers.Moe.Bazz)}
+                <br />
+                <button data-action3='dec'>-</button>
+                <button data-action3='inc'>+</button>
+            </div>
+            `;
+        const template2 = (data) => `
+            <div>
+                ${(data.customers.Larry.Foo)}
+                <br />
+                <button data-action='dec'>-</button>
+                <button data-action='inc'>+</button>
+            </div>
+            <div>
+                ${(data.customers.Larry.Bar)}
+                <br />
+                <button data-action2='dec'>-</button>
+                <button data-action2='inc'>+</button>
+            </div>
+            <div>
+                ${(data.customers.Larry.Bazz)}
+                <br />
+                <button data-action3='dec'>-</button>
+                <button data-action3='inc'>+</button>
+            </div>
             `;
         const template3 = (data) => `
             <div>
-                ${Object.values(data.prizes)}
+                ${(data.customers.Curly.Foo)}
+                <br />
+                <button data-action='dec'>-</button>
+                <button data-action='inc'>+</button>
+            </div>
+            <div>
+                ${(data.customers.Curly.Bar)}
+                <br />
+                <button data-action2='dec'>-</button>
+                <button data-action2='inc'>+</button>
+            </div>
+            <div>
+                ${(data.customers.Curly.Bazz)}
                 <br />
                 <button data-action3='dec'>-</button>
                 <button data-action3='inc'>+</button>
@@ -164,33 +203,107 @@
 
         div.addEventListener('click', (ev) => {
             const action = ev.target.getAttribute('data-action');
-            if (action === 'dec' && data.prizes.Foo > 0) {
-                data.prizes.Foo--;
-            }
-            if (action === 'inc') {
+            const action2 = ev.target.getAttribute('data-action2');
+            const action3 = ev.target.getAttribute('data-action3');
+            //Moe, Foo
+            if (action === 'dec' && data.customers.Moe.Foo > 0) {
+                data.customers.Moe.Foo--;
                 data.prizes.Foo++;
+            }
+            if (action === 'inc' && data.prizes.Foo > 0) {
+                data.prizes.Foo--;
+                data.customers.Moe.Foo++;
+            }
+            //bar
+            if (action2 === 'dec' && data.customers.Moe.Bar > 0) {
+                data.customers.Moe.Bar--;
+                data.prizes.Bar++;
+            }
+            if (action2 === 'inc' && data.prizes.Bar > 0) {
+                data.prizes.Bar--;
+                data.customers.Moe.Bar++;
+            }
+            //bazz
+            if (action3 === 'dec' && data.customers.Moe.Bazz > 0) {
+                data.customers.Moe.Bazz--;
+                data.prizes.Bazz++;
+            }
+            if (action3 === 'inc' && data.prizes.Bazz > 0) {
+                data.prizes.Bazz--;
+                data.customers.Moe.Bazz++;
             }
             render();
             renderSquares();
         });
         div2.addEventListener('click', (ev) => {
+            const action = ev.target.getAttribute('data-action');
             const action2 = ev.target.getAttribute('data-action2');
-            if (action2 === 'dec' && data.prizes.Bar > 0) {
-                data.prizes.Bar--;
+            const action3 = ev.target.getAttribute('data-action3');
+            if (action === 'dec' && data.customers.Larry.Foo > 0) {
+                data.customers.Larry.Foo--;
+                data.prizes.Foo++;
+
             }
-            if (action2 === 'inc') {
+            if (action === 'inc' && data.prizes.Foo > 0) {
+                data.prizes.Foo--;
+                data.customers.Larry.Foo++;
+
+            }
+            //bar
+            if (action2 === 'dec' && data.customers.Larry.Bar > 0) {
+                data.customers.Larry.Bar--;
                 data.prizes.Bar++;
             }
+            if (action2 === 'inc' && data.prizes.Bar > 0) {
+                data.prizes.Bar--;
+                data.customers.Larry.Bar++;
+                console.log(data.customers.Larry.Bar);
+
+            }
+            //bazz
+            if (action3 === 'dec' && data.customers.Larry.Bazz > 0) {
+                data.customers.Larry.Bazz--;
+                data.prizes.Bazz++;
+            }
+            if (action3 === 'inc' && data.prizes.Bazz > 0) {
+                data.prizes.Bazz--;
+                data.customers.Larry.Bazz++;
+            }
+
             render();
             renderSquares();
         });
         div3.addEventListener('click', (ev) => {
+            const action = ev.target.getAttribute('data-action');
+            const action2 = ev.target.getAttribute('data-action2');
             const action3 = ev.target.getAttribute('data-action3');
-            if (action3 === 'dec' && data.prizes.Bazz > 0) {
-                data.prizes.Bazz--;
+            if (action === 'dec' && data.customers.Curly.Foo > 0) {
+                data.customers.Curly.Foo--;
+                data.prizes.Foo++;
             }
-            if (action3 === 'inc') {
+            if (action === 'inc' && data.prizes.Foo > 0) {
+                data.prizes.Foo--;
+                data.customers.Curly.Foo++;
+            }
+            //bar
+            if (action2 === 'dec' && data.customers.Curly.Bar > 0) {
+                data.customers.Curly.Bar--;
+                data.prizes.Bar++;
+            }
+            if (action2 === 'inc' && data.prizes.Bar > 0) {
+                data.prizes.Bar--;
+                data.customers.Curly.Bar++;
+                console.log(data.customers.Curly.Bar);
+
+            }
+            //bazz
+            if (action3 === 'dec' && data.customers.Curly.Bazz > 0) {
+                data.customers.Curly.Bazz--;
                 data.prizes.Bazz++;
+            }
+            if (action3 === 'inc' && data.prizes.Bazz > 0) {
+                data.prizes.Bazz--;
+                data.customers.Curly.Bazz++;
             }
             render();
             renderSquares();
