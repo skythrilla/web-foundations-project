@@ -83,10 +83,10 @@
         const center = document.querySelector('#center');
 
         const handler = (evt) => {
-            if (evt.target.tagName === 'BUTTON') {
-                data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
-                render();
-            }
+            // if (evt.target.tagName === 'BUTTON') {
+            //     data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
+            render();
+            // }
         };
 
         left.addEventListener('click', handler);
@@ -98,7 +98,7 @@
             const html = `
         <ul>
             ${
-            Object.entries(data.prizes).map( key => `<li><button ${ data[key] !== side ? 'disabled' : '' }>${ key }</button></li>
+            Object.entries(data.prizes).map( key => `<li><button ${ data[key] !== side ? 'disabled' : '' }>${ key.join(': ') }</button></li>
             `).join('')
             }
         </ul>
