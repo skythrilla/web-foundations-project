@@ -70,9 +70,9 @@
                 Bazz: 5
             }
         };
-        let prize1 = Number(Object.values(data.prizes.Foo));
-        let prize2 = Object.values(data.prizes.Bar);
-        let prize3 = Object.values(data.prizes.Bazz);
+        // let prize1 = Number(Object.values(data.prizes.Foo));
+        // let prize2 = Object.values(data.prizes.Bar);
+        // let prize3 = Object.values(data.prizes.Bazz);
 
         // const state = {
         //     counter: 0,
@@ -165,8 +165,9 @@
         div.addEventListener('click', (ev) => {
             const action = ev.target.getAttribute('data-action');
             // console.log(action);
-            //console.log(prize1);
-            // let prize1 = Object.values(data.prizes.Foo);
+            let prize1 = data.prizes.Foo;
+            console.log(prize1);
+
             if (action === 'dec' && prize1 > 0) {
                 prize1--;
             }
@@ -180,7 +181,9 @@
         });
         div2.addEventListener('click', (ev) => {
             const action2 = ev.target.getAttribute('data-action2');
-            // console.log(action);
+            // console.log(action); 
+            let prize2 = data.prizes.Bar;
+
             if (action2 === 'dec' && prize2 > 0) {
                 prize2--;
             }
@@ -195,6 +198,8 @@
         div3.addEventListener('click', (ev) => {
             const action3 = ev.target.getAttribute('data-action3');
             // console.log(action);
+            let prize3 = data.prizes.Bazz;
+
             if (action3 === 'dec' && prize3 > 0) {
                 prize3--;
             }
