@@ -7,8 +7,22 @@
             background-color: grey;
         } */
         body {
-            background-color: lightgrey;
+            /* background-color: lightgrey; */
+            color: dodgerblue;
         }
+
+        h3 {
+            background-color: dodgerblue;
+            color: white;
+            /* border-radius: 100%; */
+            width: 75px;
+            /* height: 100px; */
+
+        }
+
+        /* h2 {
+            display: flex;
+        } */
 
         /* 
         li {
@@ -23,34 +37,37 @@
 
 <body>
     <div>
+        <h1 style="text-decoration: underline;">Acme Prizes</h1>
+        <center>
+            <h2>Prize Inventory</h2>
+        </center>
         <div style='display:flex'>
             <div style='flex:1'>
-                <h1>Left</h1>
+                <!-- <h3>Foo</h3> -->
                 <div id='left'>
                 </div>
             </div>
             <div style='flex:1'>
-                <h1>Center</h1>
+                <!-- <h3>Bar</h3> -->
                 <div id='center'>
                 </div>
             </div>
             <div style='flex:1'>
-                <h1>Right</h1>
+                <!-- <h3>Bazz</h3> -->
                 <div id='right'>
                 </div>
             </div>
         </div>
-
+        <center>
+            <h2>Customers</h2>
+        </center>
         <div style='display:flex'>
-            <h2>Moe:</h2>
             <div id="square" style='flex:1'>
                 Square
             </div>
-            <h2>Larry:</h2>
             <div id="square2" style='flex:1'>
                 Square2
             </div>
-            <h2>Curly:</h2>
             <div id="square3" style='flex:1'>
                 Square3
             </div>
@@ -99,17 +116,29 @@
         const renderSection = (side, div) => {
             //console.log(Object.values(data.prizes));
             const html = `
-        <ul>
             ${
-            Object.entries(data.prizes).map( key => `<li><button ${ data[key] !== side ? 'disabled' : '' }>${ key.join(': ') }</button></li>
-            `).join('')
+            // Object.entries(data.prizes).map( key => `${key.join(': ')}`).join('    ')
+            Object.entries(data.prizes).map( key => `<h3>${key.join(': ')}</h3>`).join(' ')
             }
-        </ul>
         `;
             // console.log(html);
             div.innerHTML = html;
         };
 
+        // const renderSection = (side, div) => {
+        // //console.log(Object.values(data.prizes));
+        // const html = `
+        // <ul>
+        //     ${
+        //     Object.entries(data.prizes).map( key => `<li><button ${ data[key] !==side ? 'disabled' : '' }>${ key.join(': ')
+        //             }</button></li>
+        //     `).join('')
+        //     }
+        // </ul>
+        // `;
+        // // console.log(html);
+        // div.innerHTML = html;
+        // };
         const render = () => {
             renderSection('LEFT', left);
             renderSection('CENTER', center);
@@ -121,61 +150,70 @@
 
         const template = (data) => `
             <div>
-                Foo: ${(data.customers.Moe.Foo)}
-                <br />
-                <button data-action='dec'>-</button>
+                <h2>Moe</h2>
+                <button data-action='dec'>-</button>               
+                 Foo: ${(data.customers.Moe.Foo)}
+
                 <button data-action='inc'>+</button>
             </div>
             <div>
-                Bar: ${(data.customers.Moe.Bar)}
                 <br />
-                <button data-action2='dec'>-</button>
+                <button data-action2='dec'>-</button>                
+                Bar: ${(data.customers.Moe.Bar)}
+
                 <button data-action2='inc'>+</button>
             </div>
             <div>
-                Bazz: ${(data.customers.Moe.Bazz)}
                 <br />
-                <button data-action3='dec'>-</button>
+                <button data-action3='dec'>-</button>                
+                Bazz: ${(data.customers.Moe.Bazz)}
+
                 <button data-action3='inc'>+</button>
             </div>
             `;
         const template2 = (data) => `
             <div>
-                ${(data.customers.Larry.Foo)}
-                <br />
-                <button data-action='dec'>-</button>
+                <h2>Larry</h2>
+                <button data-action='dec'>-</button>               
+                Foo: ${(data.customers.Larry.Foo)}
+
                 <button data-action='inc'>+</button>
             </div>
             <div>
-                ${(data.customers.Larry.Bar)}
                 <br />
-                <button data-action2='dec'>-</button>
+                <button data-action2='dec'>-</button>                
+                Bar: ${(data.customers.Larry.Bar)}
+
                 <button data-action2='inc'>+</button>
             </div>
             <div>
-                ${(data.customers.Larry.Bazz)}
                 <br />
-                <button data-action3='dec'>-</button>
+                <button data-action3='dec'>-</button>                
+                Bazz: ${(data.customers.Larry.Bazz)}
+
                 <button data-action3='inc'>+</button>
             </div>
             `;
         const template3 = (data) => `
             <div>
-                ${(data.customers.Curly.Foo)}
-                <br />
-                <button data-action='dec'>-</button>
+                <h2>Curly</h2>
+                <button data-action='dec'>-</button>                
+                Foo: ${(data.customers.Curly.Foo)}
+
                 <button data-action='inc'>+</button>
             </div>
             <div>
-                ${(data.customers.Curly.Bar)}
                 <br />
-                <button data-action2='dec'>-</button>
+                <button data-action2='dec'>-</button>                
+                Bar: ${(data.customers.Curly.Bar)}
+
                 <button data-action2='inc'>+</button>
             </div>
             <div>
-                ${(data.customers.Curly.Bazz)}
                 <br />
-                <button data-action3='dec'>-</button>
+                <button data-action3='dec'>-</button>                
+                Bazz: ${(data.customers.Curly.Bazz)}
+
                 <button data-action3='inc'>+</button>
             </div>
             `;
