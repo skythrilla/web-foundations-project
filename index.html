@@ -2,11 +2,19 @@
 <html lang="en">
 
 <head>
-    <!-- <style>
-        button[disabled] {
+    <style>
+        /* button[disabled] {
             background-color: grey;
+        } */
+        body {
+            background-color: lightgrey;
         }
-    </style> -->
+
+        /* 
+        li {
+            background-color: white;
+        } */
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -70,7 +78,6 @@
                 Bazz: 5
             }
         };
-
         const left = document.querySelector('#left');
         const right = document.querySelector('#right');
         const center = document.querySelector('#center');
@@ -88,7 +95,6 @@
 
         const renderSection = (side, div) => {
             //console.log(Object.values(data.prizes));
-
             const html = `
         <ul>
             ${
@@ -147,58 +153,47 @@
         const renderSq3 = () => {
             div3.innerHTML = template3(data);
         }
-        renderSq();
-        renderSq2();
-        renderSq3();
+        render();
+
+        const renderSquares = () => {
+            renderSq();
+            renderSq2();
+            renderSq3();
+        };
+        renderSquares();
 
         div.addEventListener('click', (ev) => {
             const action = ev.target.getAttribute('data-action');
-            // console.log(action);
-            let prize1 = data.prizes.Foo;
-            console.log(prize1);
-
-            if (action === 'dec' && prize1 > 0) {
-                prize1--;
+            if (action === 'dec' && data.prizes.Foo > 0) {
+                data.prizes.Foo--;
             }
             if (action === 'inc') {
-                prize1++;
+                data.prizes.Foo++;
             }
-            data.prizes.Foo = prize1;
-            console.log(data.prizes.Foo);
-            renderSq();
             render();
+            renderSquares();
         });
         div2.addEventListener('click', (ev) => {
             const action2 = ev.target.getAttribute('data-action2');
-            // console.log(action); 
-            let prize2 = data.prizes.Bar;
-
-            if (action2 === 'dec' && prize2 > 0) {
-                prize2--;
+            if (action2 === 'dec' && data.prizes.Bar > 0) {
+                data.prizes.Bar--;
             }
             if (action2 === 'inc') {
-                prize2++;
+                data.prizes.Bar++;
             }
-            data.prizes.Bar = prize2;
-            console.log(prize2);
-            renderSq2();
             render();
+            renderSquares();
         });
         div3.addEventListener('click', (ev) => {
             const action3 = ev.target.getAttribute('data-action3');
-            // console.log(action);
-            let prize3 = data.prizes.Bazz;
-
-            if (action3 === 'dec' && prize3 > 0) {
-                prize3--;
+            if (action3 === 'dec' && data.prizes.Bazz > 0) {
+                data.prizes.Bazz--;
             }
             if (action3 === 'inc') {
-                prize3++;
+                data.prizes.Bazz++;
             }
-            data.prizes.Bazz = prize3;
-            console.log(prize3);
-            renderSq3();
             render();
+            renderSquares();
         });
 
 
