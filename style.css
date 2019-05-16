@@ -35,7 +35,7 @@
   }
 
   div #person {
-      width: 50%;
+      width: 40%;
       font-weight: bold;
       border: solid 1px dodgerblue;
       border-bottom: 0;
@@ -43,8 +43,7 @@
   }
 
   div #personbtm {
-      width: 50%;
-
+      width: 40%;
       font-weight: bold;
       border: solid 1px dodgerblue;
       /* border-bottom: 0; */
@@ -52,8 +51,7 @@
   }
 
   div #persontop {
-      width: 50%;
-
+      width: 40%;
       font-weight: bold;
       border: solid 1px dodgerblue;
       border-bottom: 0;
@@ -61,8 +59,7 @@
   }
 
   h2 #personbox {
-      width: 50%;
-
+      width: 40%;
       font-weight: bold;
       border-bottom: solid 1px dodgerblue;
       /* border-bottom: 0; */
