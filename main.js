@@ -55,7 +55,7 @@ const renderSection = (side, div) => {
 
   const amount = data.prizes[side];
   const isZero = amount == 0;
-  const html = `<center><h3 class = '${isZero && "zero"}'>${side}: ${amount}</h3></center>`;
+  const html = `<center><h3>${side}</h3><h3 class = '${isZero && "zero"}'>${amount}</h3></center>`;
   div.innerHTML = html;
 };
 
@@ -70,7 +70,7 @@ render();
 const template = data => `
             <center>
             <div id='person'>
-                <h2 id='personbox'>Moe</h2>
+                <h3 id='personbox'>Moe</h2>
                 <button data-action='dec'>-</button>               
                  Foo: ${data.customers.Moe.Foo}
                 <button data-action='inc'>+</button>
@@ -93,7 +93,7 @@ const template = data => `
 const template2 = data => `
             <center>
             <div id='person'>
-                <h2 id='personbox'>Larry</h2>
+                <h3 id='personbox'>Larry</h2>
                 <button data-action='dec'>-</button>               
                 Foo: ${data.customers.Larry.Foo}
                 <button data-action='inc'>+</button>
@@ -116,7 +116,7 @@ const template2 = data => `
 const template3 = data => `
             <center>
             <div id='person'>
-                <h2 id='personbox'>Curly</h2>
+                <h3 id='personbox'>Curly</h2>
                 <button data-action='dec'>-</button>                
                 Foo: ${data.customers.Curly.Foo}
                 <button data-action='inc'>+</button>
