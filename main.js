@@ -55,11 +55,8 @@ const renderSection = (side, div) => {
 
   const amount = data.prizes[side];
   const isZero = amount == 0;
-  const html = `<center><h3 class = '${isZero &&
-    "zero"}'>${side}: ${amount}</h3></center>`;
+  const html = `<center><h3 class = '${isZero && "zero"}'>${side}: ${amount}</h3></center>`;
   div.innerHTML = html;
-
-  // div.innerHTML = data.prizes.Foo;
 };
 
 const render = () => {

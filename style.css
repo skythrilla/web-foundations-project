@@ -34,6 +34,10 @@
       /* height: 20px; */
   }
 
+  h3 .zero {
+      background-color: red;
+  }
+
   div #person {
       width: 40%;
       font-weight: bold;
@@ -65,6 +69,8 @@
       /* border-bottom: 0; */
       /* border-top: 0; */
   }
+
+
 
   /* 
         li {
