@@ -26,6 +26,9 @@ const left = document.querySelector("#left");
 const right = document.querySelector("#right");
 const center = document.querySelector("#center");
 
+/* 
+Try to avoid leaving commented-out code.
+ */
 const handler = evt => {
   // if (evt.target.tagName === 'BUTTON') {
   // data[evt.target.innerHTML] = data[evt.target.innerHTML] === 'LEFT' ? 'RIGHT' : 'LEFT';
@@ -58,16 +61,23 @@ const renderSection = (side, div) => {
   const html = `<center><h3>${side}</h3><h3 class = '${isZero && "zero"}'>${amount}</h3></center>`;
   div.innerHTML = html;
 };
-
+/* 
+Good remembering to render on first load!
+ */
 const render = () => {
   renderSection("Foo", left);
   renderSection("Bar", center);
   renderSection("Bazz", right);
 };
 render();
-
+/* 
+I like the comments to document
+ */
 //-----inc and dec---------------------------------------------
-const template = data => `
+const template = data => 
+/* 
+It would be best to loop over the data instead of hardcoding which piece of data we're affecting. 
+ */`
             <center>
             <div id='person'>
                 <h3 id='personbox'>Moe</h3>
@@ -157,6 +167,9 @@ div.addEventListener("click", ev => {
   const action2 = ev.target.getAttribute("data-action2");
   const action3 = ev.target.getAttribute("data-action3");
   //Moe, Foo
+  /* 
+  Again here, we should loop over the data and dynamically figure out which piece of data we're incrementing/decrementing
+   */
   if (action === "dec" && data.customers.Moe.Foo > 0) {
     data.customers.Moe.Foo--;
     data.prizes.Foo++;
@@ -249,6 +262,9 @@ div3.addEventListener("click", ev => {
     data.prizes.Bazz--;
     data.customers.Curly.Bazz++;
   }
+  /* 
+  Good re-rendering on data update.
+   */
   render();
   renderSquares();
 });
